@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PETRI — An Artificial Life Experiment</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+
+  <!-- p5 canvas is created inside #stage (see sketch.js) -->
+  <div id="stage"></div>
+
+  <!-- TITLE BAR  -->
+  <header id="titlebar" class="hud">
+    <div class="title-box">PETRI</div>
+    <div class="subtitle">AN ARTIFICIAL LIFE EXPERIMENT</div>
+    <div class="spacer"></div>
+    <div id="clock">DAY 1 · 07:12</div>
+    <div id="status" class="status">● OBSERVING</div>
+    <i class="glitch g1"></i><i class="glitch g2"></i><i class="glitch g3"></i>
+  </header>
+
+  <!--  LEFT COLUMN  -->
+  <aside id="left" class="column hud">
+    <section class="panel">
+      <h2>COLONY</h2>
+      <div class="big">
+        <div><label>POPULATION</label><b id="s-pop">0</b></div>
+        <div><label>GENERATION</label><b id="s-gen">0</b></div>
+        <div><label>UNKNOWN SIGNALS</label><b id="s-unknown" class="red">0</b></div>
+      </div>
+      <table class="kv">
+        <tr><td>BORN</td><td id="s-born">0</td><td>DIED</td><td id="s-died">0</td></tr>
+        <tr><td>GROUPS</td><td id="s-groups">0</td><td>LONERS</td><td id="s-loners">0</td></tr>
+        <tr><td>LARGEST</td><td id="s-largest">0</td><td>NESTS</td><td id="s-nests">0</td></tr>
+      </table>
+    </section>
+
+    <section class="panel">
+      <h2>POPULATION / TIME</h2>
+      <canvas id="graph" width="140" height="40"></canvas>
+      <div class="legend"><span class="sw white"></span>POP <span class="sw amber"></span>FOOD <span class="sw red"></span>FEAR</div>
+    </section>
+
+    <section class="panel">
+      <h2>GENE POOL <small>MEAN · TREND</small></h2>
+      <div id="traits"></div>
+    </section>
+
+    <section class="panel">
+      <h2>ENVIRONMENT</h2>
+      <table class="kv">
+        <tr><td>FOOD</td><td id="s-food">0</td><td>PLANTS</td><td id="s-plants">0</td></tr>
+        <tr><td>ROCKS</td><td id="s-rocks">0</td><td>SHELTERS</td><td id="s-shelters">0</td></tr>
+        <tr><td>LIGHT</td><td id="s-light">DAY</td><td>DEATHS</td><td id="s-causes">—</td></tr>
+      </table>
+      <div class="supply"><label>SUPPLY</label><span class="bar"><i id="supply-bar"></i></span><span id="supply-num">100</span></div>
+    </section>
+  </aside>
+
+  <!--  RIGHT COLUMN  -->
+  <aside id="right" class="column hud">
+    <section class="panel">
+      <h2>SIGNALS / LANGUAGE</h2>
+      <table class="kv">
+        <tr><td>SENT</td><td id="s-sent">0</td><td>UNDERSTOOD</td><td id="s-understood">0%</td></tr>
+        <tr><td>DIALECTS</td><td id="s-dialects">0</td><td>AGREEMENT</td><td id="s-agree">—</td></tr>
+      </table>
+      <div id="lexicon"></div>
+    </section>
+
+    <section class="panel">
+      <h2>SPECIMEN <small id="inspect-hint">[1] OBSERVE + CLICK</small></h2>
+      <div id="inspect"><p class="dim">No specimen selected.</p></div>
+    </section>
+
+    <section class="panel grow">
+      <h2>EVENT LOG</h2>
+      <div id="log"></div>
+    </section>
+  </aside>
+
+  <!--  TOOLBAR  -->
+  <footer id="toolbar" class="hud">
+    <div id="tools" class="group"></div>
+    <div class="group" id="timectl"></div>
+    <div class="group" id="sys"></div>
+  </footer>
+  <div id="tooltip" class="hud"></div>
+
+  <!-- boot / help / extinction screens -->
+  <div id="overlay"></div>
+
+  <div id="crt"></div>
+</div>
+
+<script src="lib/p5.min.js"></script>
+
+<!-- Simulation source — order matters (plain scripts, no modules, so it works from file://) -->
+<script src="src/config.js"></script>
+<script src="src/utils.js"></script>
+<script src="src/spatialGrid.js"></script>
+<script src="src/genome.js"></script>
+<script src="src/language.js"></script>
+<script src="src/sprites.js"></script>
+<script src="src/sfx.js"></script>
+<script src="src/entities.js"></script>
+<script src="src/creature.js"></script>
+<script src="src/world.js"></script>
+<script src="src/persistence.js"></script>
+<script src="src/tools.js"></script>
+<script src="src/ui.js"></script>
+<script src="src/sketch.js"></script>
+</body>
+</html>
